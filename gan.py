@@ -1,3 +1,4 @@
+import keras
 from keras.datasets import mnist
 from keras.layers import Input, Dense, Reshape, Flatten, Dropout
 from keras.layers import BatchNormalization, Activation, ZeroPadding2D
@@ -6,7 +7,6 @@ from keras.layers.convolutional import UpSampling2D, Conv2D
 from keras.models import Sequential
 from keras.optimizers import Adam
 from keras.utils.vis_utils import model_to_dot
-
 from IPython.display import SVG
 import matplotlib.pyplot as plt
 import sys
@@ -74,6 +74,8 @@ class GAN():
     def build_combined(self, generator, discriminator):
         # DiscriminatorはGeneratorの学習時，学習しない
         # Trueに戻していないので不安になるが，compileしないと更新されないので大丈夫
+        # Discriminatorはここに来る前にCompileしている
+        # つまり，CombinedはDiscriminatorを学習しない別のモデルだが，Discriminatorを参照している．
         discriminator.trainable = False
         return Sequential([generator, discriminator])
     
