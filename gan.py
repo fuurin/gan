@@ -15,14 +15,14 @@ import numpy as np
 
 
 class GAN():
-    def __init__(self, latent_dim=100, optimizer=None, img_dir="images/gan"):
+    def __init__(self, z_dim=100, optimizer=None, img_dir="images/gan"):
         # gpu_config()
         
         self.img_rows = 28
         self.img_cols = 28
         self.channels = 1
         self.img_shape = (self.img_rows, self.img_cols, self.channels)
-        self.latent_dim = 100
+        self.z_dim = z_dim
         self.img_dir=img_dir
         
         if not optimizer:
