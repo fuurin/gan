@@ -8,7 +8,7 @@ from keras.models import Sequential
 from keras.optimizers import Adam
 from keras.utils.vis_utils import model_to_dot
 from IPython.display import SVG
-from utils import sequentially_memory_allocate
+from utils import gpu_config
 import matplotlib.pyplot as plt
 import sys
 import numpy as np
@@ -16,7 +16,7 @@ import numpy as np
 
 class GAN():
     def __init__(self, latent_dim=100, optimizer=None, img_dir="images/gan"):
-        sequentially_memory_allocate()
+        # gpu_config()
         
         self.img_rows = 28
         self.img_cols = 28

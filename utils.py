@@ -1,9 +1,12 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from keras.backend import tensorflow_backend
 from IPython.display import clear_output
 
-def sequentially_memory_allocate():
-    config = tf.ConfigProto(gpu_options=tf.GPUOptions(allow_growth=True))
+def gpu_config():
+    config = tf.ConfigProto(gpu_options=tf.GPUOptions(
+        # visible_device_list="0", # specify GPU
+        allow_growth=True
+    ))
     session = tf.Session(config=config)
     tensorflow_backend.set_session(session)
 
